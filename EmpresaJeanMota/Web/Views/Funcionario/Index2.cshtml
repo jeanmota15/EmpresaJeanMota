@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Dominio.Funcionario>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Novo Cadastro", "Cadastrar")
+</p>
+
+@using (Html.BeginForm("Index2","Funcionario", FormMethod.Get))
+{
+    <p>
+        <text>Pesquisar por Nome:</text>@Html.DropDownList("nome", new SelectList(ViewBag.Pesquisa), string.Empty)
+        <input type="submit" value="Pesquisar" />
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdFuncionario)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IdCidade)*@
+            Cidade
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IdEstado)*@
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdFuncionario)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade.NomeCidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado.NomeEstado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdFuncionario }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.IdFuncionario }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.IdFuncionario })
+        </td>
+    </tr>
+}
+
+</table>

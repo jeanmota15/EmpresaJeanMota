@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Dominio.Funcionario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cadastro", "Cadastrar")
+</p>
+
+@using (Html.BeginForm("Index", "Funcionario", FormMethod.Get))
+{
+    <p>
+        <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisa Nome e Cargo" />
+        <input type="submit" value="Pesquisar" />
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdFuncionario)
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.Nome)*@
+            @Html.ActionLink("Nome", "Index", new { ordem = ViewBag.Nome})
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DataNascimento)*@
+            @Html.ActionLink("Data Nascimento", "Index", new { ordem = ViewBag.Data})
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IdCidade)*@
+            Cidade
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IdEstado)*@
+            Estado
+        </th>
+        <th>Ações</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdFuncionario)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @item.Cidade.NomeCidade
+            @*@Html.DisplayFor(modelItem => item.Cidade.NomeCidade)*@
+            @*@Html.DisplayFor(modelItem => item.IdCidade) Se colocar id vai mostrar tds os itens*@
+        </td>
+        <td>
+            @item.Estado.NomeEstado
+            @*@Html.DisplayFor(modelItem => item.Estado.NomeEstado)*@
+            @*@Html.DisplayFor(modelItem => item.IdEstado)*@
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdFuncionario }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.IdFuncionario }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.IdFuncionario })
+        </td>
+    </tr>
+}
+
+</table>

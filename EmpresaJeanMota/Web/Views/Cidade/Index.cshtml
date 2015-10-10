@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Dominio.Cidade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cadastro", "Cadastrar")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdCidade)
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.NomeCidade)*@
+            Nome da Cidade
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdCidade)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeCidade)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdCidade }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.IdCidade }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.IdCidade })
+        </td>
+    </tr>
+}
+
+</table>

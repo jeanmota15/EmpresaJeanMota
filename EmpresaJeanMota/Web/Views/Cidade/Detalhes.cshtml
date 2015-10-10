@@ -1,0 +1,35 @@
+﻿@model Dominio.Cidade
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Cidade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.IdCidade)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.IdCidade)
+        </dd>*@
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.NomeCidade)*@
+            Nome da Cidade
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCidade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdCidade }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

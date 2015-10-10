@@ -1,0 +1,41 @@
+﻿@model Dominio.Cidade
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+
+<h3>Deseja excluir o registro?</h3>
+<div>
+    <h4>Cidade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.IdCidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCidade)
+        </dd>*@
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.NomeCidade)*@
+            Nome da Cidade
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCidade)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>
